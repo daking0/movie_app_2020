@@ -1,42 +1,57 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const foodLike = [
   {
     id : 1,
     name : "kim",
-    image : ""
+    image : "",
+    rating : 5
   },
   {
     id : 2,
     name : "kimbab",
-    image : ""
+    image : "",
+    rating : 4.9
   },
   {
     id : 3,
     name : "meat",
-    image : ""
+    image : "",
+    rating : 4.8
   }
 ]
 
-function Food({ name, picture }) {
-  return <div>
-    I like {name}
-    <img src={picture} alt ={name}/>
-    </div>;
-}
-
-function renderFood(dish)
-{
-  return <Food key = {dish.id} name={dish.name} picture={dish.image}/>
-}
-function App() {
+function Food({ name, picture , rating }) {
   return (
     <div>
-      <h1>Hello</h1>
-      {foodLike.map(renderFood)}
+      <h1>I like {name}</h1>
+      <img src={picture} alt ={name}/>
+      <h4>{rating} </h4>
     </div>
   );
 }
+
+Food.propTypes ={
+  name : PropTypes.string.isRequired,
+  picture : PropTypes.string.isRequired,
+  rating : PropTypes.number
+};
+
+function App() {
+  return (
+    <div>
+      {foodLike.map(dish =>(
+        <Food 
+        key = {dish.id} 
+        name={dish.name} 
+        picture={dish.image} 
+        rating={dish.rating} />
+      ))}
+    </div>
+  );
+}
+
 export default App;
 
 
