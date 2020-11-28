@@ -2,14 +2,17 @@ import React from "react";
 
 const foodLike = [
   {
+    id : 1,
     name : "kim",
     image : ""
   },
   {
+    id : 2,
     name : "kimbab",
     image : ""
   },
   {
+    id : 3,
     name : "meat",
     image : ""
   }
@@ -18,17 +21,19 @@ const foodLike = [
 function Food({ name, picture }) {
   return <div>
     I like {name}
-    <img src={picture}/>
+    <img src={picture} alt ={name}/>
     </div>;
 }
 
+function renderFood(dish)
+{
+  return <Food key = {dish.id} name={dish.name} picture={dish.image}/>
+}
 function App() {
   return (
     <div>
       <h1>Hello</h1>
-      {foodLike.map(dish =>
-        <Food name={dish.name} picture={dish.image}/>
-      )}
+      {foodLike.map(renderFood)}
     </div>
   );
 }
@@ -41,9 +46,9 @@ argument 에
 ({fav}) 로 직접 내부에서 얻을 수도 있다. -> return 내용 내에서도 {fav}로 뽑아냄
 */
 
-const fr = ["a","b","c"]
+// const fr = ["a","b","c"]
 
-fr.map(current =>{
-  console.log(current);
-  return 0
-})
+// fr.map(current =>{
+//   console.log(current);
+//   return 0
+// })
